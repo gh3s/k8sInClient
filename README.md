@@ -7,7 +7,7 @@
 [![HitCount](http://hits.dwyl.io/GH3S/K8SINCLIENT.svg)](http://hits.dwyl.io/GH3S/K8SINCLIENT)
 [![npm](https://img.shields.io/npm/dw/k8sinclient)](https://www.npmjs.com/package/k8sinclient)
 
-Using k8sInClient you get ready to create, kill and search for jobs in your cluster like processes inside a PC.
+Using k8sInClient you get ready to create, kill and search for resources in your cluster like processes inside a PC.
 
 ## GETTING STARTED
 
