@@ -1,6 +1,6 @@
-# Kubernetes In-Cluster Job Client
+# Kubernetes In-Cluster Client
 
-> Dedicated in-cluster client for job management
+> Dedicated in-cluster client for object management
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/gh3s/k8sinclient/graphs/commit-activity)
 [![HitCount](https://img.shields.io/github/issues/gh3s/4crud/total.svg)](http://hits.dwyl.io/GH3S/K8SINCLIENT)
@@ -9,7 +9,7 @@
 
 Using k8sInClient you get ready to create, kill and search for jobs in your cluster like processes inside a PC.
 
-## Getting Started
+## GETTING STARTED
 
 Before install please install [docker](https://docs.docker.com/get-docker/) and [kubernetes](https://kubernetes.io/docs/setup/).
 
@@ -31,11 +31,14 @@ This project uses Mocha-Chai combination in /test folder
 ```sh
 npm test
 ```
-### To insert a job
+
+## EXAMPLES
+### Inserting a job
 
 ```javascript
 const Client = require('k8sinclient')
-const client = new Client()
+const { Job } = require('../')
+const job = new Job()
 
 const jobYaml = {
     "apiVersion": "batch/v1",
@@ -71,7 +74,7 @@ job.create('default', jobYaml, (res) => console.log(res.body.metadata))
 const Client = require('k8sinclient')
 const client = new Client()
   
-client.read('default', 'pi-with-ttl', (res) => console.log(res.body))
+job.read('default', 'pi-with-ttl', (res) => console.log(res.body))
 ```
 
 ### To delete a job
@@ -79,8 +82,20 @@ client.read('default', 'pi-with-ttl', (res) => console.log(res.body))
 const Client = require('k8sinclient')
 const client = new Client()
   
-client.delete('namespace', 'job', (res) => console.log(res.body))
+job.delete('namespace', 'job', (res) => console.log(res.body))
 ```
+
+>NOTE: For other resources, just use ``` <object>.<action> ```
+
+Where implemented ***object*** is instantiated of:
+1. Job()
+2. CronJob()
+3. Deployment()
+
+And implemented ***action*** is
+1. create (message, callback)
+2. read (message, callback)
+3. delete (message, callback)
 
 ## Running
 
@@ -92,6 +107,8 @@ npm start
 
 * 0.0.1
     * CHANGE: Work in progress
+* 0.0.2
+    * ADD: Cronjob and deployment objects
 
 
 ## Authors
