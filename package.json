@@ -1,6 +1,6 @@
 {
   "name": "k8sinclient",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "A small client to manage jobs inside Kubernetes clusters easily as pc processes",
   "main": "index.mjs",
   "scripts": {
