@@ -107,7 +107,7 @@ npm start
 
 * 0.0.1
     * CHANGE: Work in progress
-* 0.0.2
+* 0.1.0
     * ADD: Cronjob and deployment objects
 
 

@@ -25,13 +25,13 @@
   },
   "homepage": "https://github.com/gh3s/k8sInClient#readme",
   "dependencies": {
-    "@kubernetes/client-node": "^0.11.1"
+    "@kubernetes/client-node": "^0.12.0"
   },
   "directories": {
     "test": "test"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^7.2.0"
+    "mocha": "^8.0.1"
   }
 }

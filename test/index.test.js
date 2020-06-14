@@ -4,6 +4,7 @@ const job = new Job()
 const deployment = new Deployment()
 const cronjob = new CronJob()
 
+const expect = chai.expect
 const assert = chai.assert
 
 const jobYaml = {
@@ -71,8 +72,39 @@ const deploymentYaml = {
     }
 }
 
+const cronjobYaml = {
+    "apiVersion": "batch/v1beta1",
+    "kind": "CronJob",
+    "metadata": {
+      "name": "hello"
+    },
+    "spec": {
+      "schedule": "*/1 * * * *",
+      "jobTemplate": {
+        "spec": {
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "name": "hello",
+                  "image": "busybox",
+                  "args": [
+                    "/bin/sh",
+                    "-c",
+                    "date; echo Hello from the Kubernetes cluster"
+                  ]
+                }
+              ],
+              "restartPolicy": "OnFailure"
+            }
+          }
+        }
+      }
+    }
+  }
+
 describe('Create, read and delete a running job and deployment', () => {
-    /*it('Test:  Create a single job', function(done) {
+    it('Test:  Create a single job', function(done) {
         job.create('default', jobYaml, (res) => {   //default is the namespace name
             assert.isUndefined(res.body.status.active)
             done()
@@ -99,46 +131,47 @@ describe('Create, read and delete a running job and deployment', () => {
         }
         setTimeout(fn, 10000)
     })
-    
+    /*
+     * DEPLOYMENTS
+     */
     it('Test:  Create a single deployment', function(done) {
         deployment.create('default', deploymentYaml, (res) => {   //default is the namespace name
-            console.log(res)
-            assert.isUndefined(res.body.status.active)
+            expect(res.response.complete).to.be.true
             done()
         })
     })
 
     it('Test:  Read a single job - active should be true', function(done) {
-        this.timeout(0);
-        let fn = () => {
-            deployment.read('default', 'nginx-deployment', (res) => {
-                assert.equal(res.body.status.availableReplicas, 3)
-                done()
-            })
-        }
-        setTimeout(fn, 10000)
+        deployment.read('default', 'nginx-deployment', (res) => {
+            expect(res.response.complete).to.be.true
+            done()
+        })
     })
 
-    it('Test:  Delete a single job', function() {
-        this.timeout(0)
-        let fn = () => {
-            deployment.delete('default', 'nginx-deployment', (res) => {
-                assert.equal(res.body.status.availableReplicas, 3)
-            })
-        }
-        setTimeout(fn, 10000)
-    })*/
+    it('Test:  Delete a single job', function(done) {
+        deployment.delete('default', 'nginx-deployment', (res) => {
+            expect(res.response.complete).to.be.true
+            done()
+        })
+    })
+    /*
+     * Cronjobs
+     */
+    it('Test:  Create a single cronjob', function() {
+        cronjob.create('default', cronjobYaml, (res) => {
+            expect(res.response.complete).to.be.true
+        })
+    })
 
     it('Test:  Read a single cronjob', function() {
-        this.timeout(0)
-        let fn = () => {
-            cronjob.read('default', 'uploader-cronjob-gcp', (res) => {
-                console.log(res)
-                //assert.equal(res.body.status.availableReplicas, 3)
-                //done()
-            })
-        }
-        setTimeout(fn, 1000)
+        cronjob.read('default', 'hello', (res) => {
+            expect(res.response.complete).to.be.true
+        })
     })
 
+    it('Test:  Delete a single cronjob', function() {
+        cronjob.delete('default', 'hello', (res) => {
+            expect(res.response.complete).to.be.true
+        })
+    })
 })
