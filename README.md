@@ -109,6 +109,8 @@ npm start
     * CHANGE: Work in progress
 * 0.1.1
     * ADD: Cronjob and deployment objects
+* 0.1.2
+	* ADD: PVs and PV claims
 
 
 ## Authors
