@@ -176,7 +176,7 @@ class PersistentVolume {
   }
 
   delete (name, fnc) {
-    this.load().readPersistentVolume(name, true)
+    this.load().deletePersistentVolume(name, true)
       .then(res => fnc(res))
       .catch(e => fnc(e))
   }
