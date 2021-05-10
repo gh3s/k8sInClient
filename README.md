@@ -111,7 +111,8 @@ npm start
     * ADD: Cronjob and deployment objects
 * 0.1.2
 	* ADD: PVs and PV claims
-
+* 0.1.5
+	* UPDATE: security faults
 
 ## Authors
 
