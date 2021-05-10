@@ -25,7 +25,6 @@ class Job {
       .then(r => fnc(r))
       .catch(e => fnc(e))
   }
-
   /**
    *
    * @param {*} namespace (eg. 'default')
