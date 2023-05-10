@@ -1,0 +1,45 @@
+{
+  "name": "k8sinclient",
+  "version": "0.1.5",
+  "description": "A small client to manage jobs inside Kubernetes clusters easily as pc processes",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gh3s/k8sInClient.git"
+  },
+  "keywords": [
+    "kubernetes",
+    "client",
+    "nodejs",
+    "javascript",
+    "k8s",
+    "kubernetes"
+  ],
+  "author": "gh3s",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gh3s/k8sInClient/issues"
+  },
+  "homepage": "https://github.com/gh3s/k8sInClient#readme",
+  "dependencies": {
+    "@kubernetes/client-node": "^0.12.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^8.0.1"
+  }
+}

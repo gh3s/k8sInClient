@@ -113,6 +113,8 @@ npm start
 	* ADD: PVs and PV claims
 * 0.1.5
 	* UPDATE: security faults
+* 0.2.0
+  * UPDATE: security faults
 
 ## Authors
 
